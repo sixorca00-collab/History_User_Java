@@ -1,6 +1,7 @@
 package Legacy_VS_LTS;
 
 public class Empleado {
+  
     //Tipos de datos requeridos.
     private byte nivel;
     private short diasVacaciones;
@@ -14,7 +15,7 @@ public class Empleado {
     private String nombreCompleto;
 
     //Constructor
-    public Empleado(byte nivel, short diasVacaciones, int edad, long salarioAnual, float horasExtra, double bono, char genero, Boolean activo){
+    public Empleado(byte nivel, short diasVacaciones, int edad, long salarioAnual, float horasExtra, double bono, char genero, Boolean activo, String nombreCompleto){
         this.nivel = nivel;
         this.diasVacaciones = diasVacaciones;
         this.edad = edad;
@@ -36,5 +37,11 @@ public class Empleado {
     //Setter 
     public void setActivo(Boolean activo){
         this.activo = activo; //Puede cambiar en cualquier momento
+    }
+          public static void main(String[] args) {
+        Empleado empleado1 = new Empleado((byte) 3, (short) 15, 30, 50000L, 10.5f, 2000.0, 'M', true, "Juan Perez");
+        System.out.println("Nombre: " + empleado1.getnombreCompleto());
+        System.out.println("Edad: " + empleado1.getEdad());
+        System.out.println(empleado1.genero);
     }
 }
