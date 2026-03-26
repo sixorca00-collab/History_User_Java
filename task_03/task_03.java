@@ -3,12 +3,24 @@ import java.util.Scanner;
 
 public class task_03 {
     public static void main(String[] args) {
+
+     String head = """
+                *=================================*
+                *      Corporate Talent Hub       *
+                * ================================*
+                *       Tu estado es: ONLINE      *
+                * ================================*
+                """;
+
+        System.out.println(head);
         calcularSalarioFinal();
         validarElegibilidad();
     }
 
 
 static void calcularSalarioFinal() {
+
+
     Scanner sc = new Scanner(System.in);
 
     double salarioBase = 0;
