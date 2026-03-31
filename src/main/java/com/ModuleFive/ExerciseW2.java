@@ -1,4 +1,4 @@
-package com.ModuleFiveJava;
+package main.java.com.ModuleFive;
 
 import java.util.Scanner;
 
@@ -18,24 +18,33 @@ public class ExerciseW2 {
             // Mostramos el menú
             System.out.println(head + "\n Digame que quiere mi rey:\n 1.Crear Empleado\n 2.Crear Empresa\n 3.Definir categoria salarial.\n 4.Salir");
 
-            // Leemos la opción del usuario
-            byte option = sc.nextByte();
-            sc.nextLine(); // Limpiamos buffer
-
             // Control del menú
-            switch (option) {
-                case 1: CreateUser(sc); break;
-                case 2: CreateFactory(sc); break;
-                case 3: calcularCategoriaSalarial(sc); break;
+            try {
+
+                // Leemos la opción del usuario
+                byte option = sc.nextByte();
+                sc.nextLine(); // Limpiamos buffer
+
+                switch (option) {
+                    case 1: CreateUser(sc);
+                        break;
+                    case 2: CreateFactory(sc);
+                        break;
+                    case 3: calcularCategoriaSalarial(sc);
+                        break;
                 /*En resumen el break es para definir que pare, si no ejecutara todos los demas casos de ahi para abajo,
                 haciendo mas de lo que se pidio y en caso de que sea algo muy largo o tenga bucles podria hasta dañar el programa o saturar, el punto es
                 que olvidar un break era algo horrible/ el lugar donde uso el nuevo switch explico porque es mejor y mas breve.*/
-                case 4 :
-                    salir = true;
-                    System.out.println("Saliendo...");
-                    break;
-                default: System.out.println("Ingrese un número válido porfa.");
+                    case 4 :
+                        salir = true;
+                        System.out.println("Saliendo...");
+                        break;
+                    default: System.out.println("Ingrese un número válido porfa.");
                 }
+            }catch (java.util.InputMismatchException e){
+                System.out.println("Asegurese de ingresar el dato que le estan pidiendo.");
+                sc.nextLine();
+            }
 
 
 
