@@ -7,16 +7,21 @@ public class ExerciseW2 {
 
         boolean salir = false;
         String head = """
-                *===============================*
-                *             Menú              *
-                *===============================*""";
+        *=================================*
+        *             MENÚ               *
+        *=================================*
+        * 1 - Crear Empleado             *
+        * 2 - Crear Empresa              *
+        * 3 - Definir categoría salarial *
+        * 4 - Salir                      *
+        *=================================*""";
         //System.out.println(head); Hice un encabezado aprovechando el TextBlock.
 
         Scanner sc = new Scanner(System.in);
 
         do {
             // Mostramos el menú
-            System.out.println(head + "\n Digame que quiere mi rey:\n 1.Crear Empleado\n 2.Crear Empresa\n 3.Definir categoria salarial.\n 4.Salir");
+            System.out.println(head);
 
             // Control del menú
             try {
@@ -113,10 +118,10 @@ public class ExerciseW2 {
         var salary = sc.nextInt();
         sc.nextLine();
         String category = switch (salary){
-            case int s when s <= 1000 -> "Salario bajo";
-            case int s when s <= 2500 -> "Salario medio";
-            case int s when s <= 3000 -> "Salario medio-alto";
-            case int s when s <= 6000 -> "Salario alto";
+            case int s when s <= 1000 -> "Junior Developer";
+            case int s when s <= 2500 -> "Mid developer";
+            case int s when s <= 3000 -> "Junior Developer";
+            case int s when s <= 6000 -> "Senior Developer";
             /*En este caso el nuevo switch es mejor ya que es mas breve de escribir y toma cada case como un caso independiente
              cada case -> es una expresion diferente y java con esto no permite caida en cascada y el fall-trough era un problema muy comun
              en el anterior al olvidar un break ejecutaba lo demas sin parar*/
