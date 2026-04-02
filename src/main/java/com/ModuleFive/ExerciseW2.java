@@ -164,12 +164,16 @@
 
         double promedio = suma / 3;
 
-        // Casting explícito (pierde decimales)
+        // Casting explícito    
         int puntajeSimplificado = (int) promedio;
+
+        // Operador ternario
+        String estado = (promedio >= 70) ? "Promovido" : "No promovido";
 
         System.out.println("\nEmpleado #" + (i + 1));
         System.out.println("Promedio real: " + promedio);
         System.out.println("Puntaje simplificado (int): " + puntajeSimplificado);
+        System.out.println("Estado: " + estado);
     }
 }
     }
