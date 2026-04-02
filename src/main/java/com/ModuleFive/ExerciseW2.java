@@ -53,6 +53,23 @@
                     System.out.println("Asegurese de ingresar el dato que le estan pidiendo.");
                     sc.nextLine();
                 }
+                /*
+Análisis LTS (Java 8 vs Java 17/21):
+
+En Java 8, los mensajes de error eran más genéricos y menos descriptivos,
+lo que dificultaba identificar la causa exacta de una excepción.
+
+A partir de versiones más modernas, especialmente Java 17 y Java 21 (LTS),
+se introdujeron mejoras importantes en el diagnóstico de errores:
+
+- Mensajes más claros y detallados.
+- Mejor identificación de la causa exacta del problema.
+- NullPointerException más descriptivos (indican qué variable es null).
+- Mejor trazabilidad del error en tiempo de ejecución.
+
+Estas mejoras permiten a los desarrolladores depurar más rápido
+y entender con mayor facilidad los fallos del programa.
+*/
 
 
 
