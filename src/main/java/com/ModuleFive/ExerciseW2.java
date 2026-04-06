@@ -16,7 +16,8 @@ public class ExerciseW2 {
         * 2 - Crear Empresa               *
         * 3 - Definir categoría salarial  *
         * 4 - Mostrar todos los usuarios  *
-        * 5 - Salir                       *
+        * 5- mostrar ultimo empleado      *
+        * 6 - Salir                       *
         *=================================*""";
         //System.out.println(head); Hice un encabezado aprovechando el TextBlock.
 
@@ -47,6 +48,9 @@ public class ExerciseW2 {
                         showEmploys(mapUser);
                         break;
                     case 5:
+                        lastEmployRegistered(empleados);
+                        break;
+                    case 6:
                         salir = true;
                         System.out.println("Saliendo...");
                         break;
@@ -162,5 +166,15 @@ public class ExerciseW2 {
             System.out.println("id: " + id + " name: " + e.name() + " age: " + e.age() + " salary: " + e.SalaryByMoth() + " work remote: " + e.isRemote());
         }
         }
+
+    static void lastEmployRegistered(ArrayList<Empleado> empleados){
+        if (empleados != null && !empleados.isEmpty()) {
+            // obtengo el ultimo elemento
+            Empleado lastEmploy = empleados.get(empleados.size() - 1);
+            System.out.println("Last employee: " + lastEmploy);
+        } else {
+            System.out.println("No employees registered.");
+        }
+    }
 }
 
