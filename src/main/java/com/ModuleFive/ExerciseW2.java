@@ -18,7 +18,8 @@ public class ExerciseW2 {
         * 4 - Get all users       *
         * 5- Show last employed      
         * 6 -show first employed
-        * 7 - Exit           *
+        * 7 - remove user by Id
+        * 8 - Exit           *
         *=================================*""";
         //System.out.println(head); Hice un encabezado aprovechando el TextBlock.
 
@@ -55,6 +56,9 @@ public class ExerciseW2 {
                         firtsEmployRegistered(employs);
                         break;
                     case 7:
+                        removeEmploy(sc,  employs,  mapUser);
+                        break;
+                    case 8:
                         exit = true;
                         System.out.println("Leaving...");
                         break;
@@ -178,6 +182,33 @@ public class ExerciseW2 {
             System.out.println("id: " + id + " name: " + e.name() + " age: " + e.age() + " salary: " + e.SalaryByMoth() + " work remote: " + e.isRemote());
         }
         }
+    static void removeEmploy(Scanner sc, ArrayList<Empleado> employs, HashMap<Integer, Empleado> mapUser){
+
+        System.out.println("Enter the ID you want to remove:");
+
+        // validar ANTES de leer
+        if (!sc.hasNextInt()) {
+            System.out.println("Invalid ID.");
+            sc.nextLine(); // limpiar buffer
+            return;
+        }
+
+        int search = sc.nextInt();
+        sc.nextLine(); // limpiar buffer
+
+        //  verificar si existe
+        if (!mapUser.containsKey(search)) {
+            System.out.println("Employee not found.");
+            return;
+        }
+
+        // eliminar de ambas estructuras
+        mapUser.remove(search);
+        employs.removeIf(emp -> emp.id() == search);
+
+        System.out.println("Employee removed successfully.");
+    }
+
 
     static void lastEmployRegistered(ArrayList<Empleado> employs){
         if (employs != null && !employs.isEmpty()) {
@@ -188,14 +219,15 @@ public class ExerciseW2 {
             System.out.println("No employees registered.");
         }
     }
-    static void firtsEmployRegistered(ArrayList<Empleado> employs){
-        if (employs != null && !employs.isEmpty()) {
-            // obtengo el indice 0.
-            Empleado firstEmploy= employs.get(0);
-            System.out.println("First employee: " + firstEmploy);
-        } else {
-            System.out.println("No employees registered.");
+    static void firtsEmployRegistered(ArrayList<Empleado> employs) {
+            if (employs != null && !employs.isEmpty()) {
+                // obtengo el indice 0.
+                Empleado firstEmploy = employs.get(0);
+                System.out.println("First employee: " + firstEmploy);
+            } else {
+                System.out.println("No employees registered.");
+            }
         }
-    }
 }
+
 
