@@ -1,5 +1,6 @@
 package main.java.com.ModuleFive;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ExerciseW2 {
@@ -31,7 +32,7 @@ public class ExerciseW2 {
                 sc.nextLine(); // Limpiamos buffer
 
                 switch (option) {
-                    case 1: CreateUser(sc);
+                    case 1: CreateUser(sc, empleados );
                         break;
                     case 2: CreateFactory(sc);
                         break;
@@ -58,8 +59,9 @@ public class ExerciseW2 {
 
     //Creo las funciones afuera ya que es mas profesional
 
-
-     static void CreateUser(Scanner sc){
+    // inicializo el arrayList
+     static ArrayList<Empleado> empleados = new ArrayList<>();
+     static void CreateUser(Scanner sc, ArrayList<Empleado> empleados){
         //Pasamos a capturar datos.
          System.out.println("Ingrese el nombre del empleado: ");
          var name = sc.nextLine();
@@ -88,8 +90,12 @@ public class ExerciseW2 {
 
          //Insertamos los datos en el record.
          Empleado NewEmploy = new Empleado(name,age,isRemote,salary);
-         // Mostramos los datos y el empleado.
+         //Lo inserto en la arrayList.
+         empleados.add(NewEmploy);
 
+         // Mostramos los datos y el empleado.
+         System.out.println("Testeo de ingresar en la ArrayList");
+         System.out.println(empleados);
          System.out.println("El empleado creado tiene los siguientes datos: \n" + "Su nombre es: " + NewEmploy.name() + " Y tiene: " + NewEmploy.age() + " años" + " Trabaja remoto? " + NewEmploy.isRemote() + "Y su salario mensual asignado fue: " + NewEmploy.SalaryByMoth() + "$ dolares" );
     }
 
