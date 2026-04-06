@@ -120,8 +120,8 @@ public class ExerciseW2 {
         String category = switch (salary){
             case int s when s <= 1000 -> "Junior Developer";
             case int s when s <= 2500 -> "Mid developer";
-            case int s when s <= 3000 -> "Junior Developer";
-            case int s when s <= 6000 -> "Senior Developer";
+            case int s when s <= 3000 -> "Senior Developer";
+            case int s when s <= 6000 -> "Arquitect Developer";
             /*En este caso el nuevo switch es mejor ya que es mas breve de escribir y toma cada case como un caso independiente
              cada case -> es una expresion diferente y java con esto no permite caida en cascada y el fall-trough era un problema muy comun
              en el anterior al olvidar un break ejecutaba lo demas sin parar*/
