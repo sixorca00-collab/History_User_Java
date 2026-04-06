@@ -1,6 +1,7 @@
 package main.java.com.ModuleFive;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class ExerciseW2 {
@@ -9,12 +10,13 @@ public class ExerciseW2 {
         boolean salir = false;
         String head = """
         *=================================*
-        *             MENÚ               *
+        *             MENÚ                *
         *=================================*
-        * 1 - Crear Empleado             *
-        * 2 - Crear Empresa              *
-        * 3 - Definir categoría salarial *
-        * 4 - Salir                      *
+        * 1 - Crear Empleado              *
+        * 2 - Crear Empresa               *
+        * 3 - Definir categoría salarial  *
+        * 4 - Mostrar todos los usuarios  *
+        * 5 - Salir                       *
         *=================================*""";
         //System.out.println(head); Hice un encabezado aprovechando el TextBlock.
 
@@ -41,7 +43,10 @@ public class ExerciseW2 {
                 /*En resumen el break es para definir que pare, si no ejecutara todos los demas casos de ahi para abajo,
                 haciendo mas de lo que se pidio y en caso de que sea algo muy largo o tenga bucles podria hasta dañar el programa o saturar, el punto es
                 que olvidar un break era algo horrible/ el lugar donde uso el nuevo switch explico porque es mejor y mas breve.*/
-                    case 4 :
+                    case 4:
+                        showEmploys(mapUser);
+                        break;
+                    case 5:
                         salir = true;
                         System.out.println("Saliendo...");
                         break;
@@ -58,10 +63,15 @@ public class ExerciseW2 {
     }
 
     //Creo las funciones afuera ya que es mas profesional
-
+    //Inicio los id en cero
+     static int  contadorID = 1;
     // inicializo el arrayList
      static ArrayList<Empleado> empleados = new ArrayList<>();
+     //Inicializo tambien el HashMap
+    static HashMap<Integer, Empleado> mapUser = new HashMap<>();
      static void CreateUser(Scanner sc, ArrayList<Empleado> empleados){
+         //Sumamos un numero al id
+         var id = contadorID++;
         //Pasamos a capturar datos.
          System.out.println("Ingrese el nombre del empleado: ");
          var name = sc.nextLine();
@@ -89,14 +99,21 @@ public class ExerciseW2 {
          var salary = sc.nextLong();
 
          //Insertamos los datos en el record.
-         Empleado NewEmploy = new Empleado(name,age,isRemote,salary);
+         Empleado NewEmploy = new Empleado(id, name,age,isRemote,salary);
          //Lo inserto en la arrayList.
          empleados.add(NewEmploy);
+         //De paso en el HashMap dejando el id como clave y el Empleado como valor
+
+         mapUser.put(id, NewEmploy);
+
 
          // Mostramos los datos y el empleado.
-         System.out.println("Testeo de ingresar en la ArrayList");
-         System.out.println(empleados);
-         System.out.println("El empleado creado tiene los siguientes datos: \n" + "Su nombre es: " + NewEmploy.name() + " Y tiene: " + NewEmploy.age() + " años" + " Trabaja remoto? " + NewEmploy.isRemote() + "Y su salario mensual asignado fue: " + NewEmploy.SalaryByMoth() + "$ dolares" );
+         //System.out.println("Testeo de ingresar en la ArrayList");
+         //System.out.println(empleados);
+
+         //System.out.println("Testeo de ingresar en el HashMap");
+         //System.out.println(mapUser);
+         System.out.println("El empleado creado tiene los siguientes datos: \n " + "Su id es: "+ id + " Su nombre es: " + NewEmploy.name() + " Y tiene: " + NewEmploy.age() + " años" + " Trabaja remoto? " + NewEmploy.isRemote() + " Y su salario mensual asignado fue: " + NewEmploy.SalaryByMoth() + "$ dolares" );
     }
 
 
@@ -119,6 +136,7 @@ public class ExerciseW2 {
         System.out.println("La empresa ingresada fue: "+ newFactory.nameCompany() + " con " + newFactory.sedes() + " Sedes" + " Y dedicada a: " + newFactory.area());
 
     }
+
     static void calcularCategoriaSalarial(Scanner sc) {
         System.out.println("cuanto gana el fulano a evaluar: ");
         var salary = sc.nextInt();
@@ -137,5 +155,12 @@ public class ExerciseW2 {
         System.out.println("El salario ingresado: " + salary + " Corresponde a la categoria de: " + category);
 
     }
+    static void showEmploys(HashMap<Integer, Empleado> mapUser) {
+        System.out.println("La lista de todos los empleados es: ");
+        for (Integer id: mapUser.keySet()){
+            Empleado e =mapUser.get(id);
+            System.out.println("id: " + id + " name: " + e.name() + " age: " + e.age() + " salary: " + e.SalaryByMoth() + " work remote: " + e.isRemote());
+        }
+        }
 }
 
