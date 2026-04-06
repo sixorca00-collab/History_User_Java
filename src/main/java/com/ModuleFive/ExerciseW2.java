@@ -16,8 +16,9 @@ public class ExerciseW2 {
         * 2 - Create Company               *
         * 3 - Define salary category  *
         * 4 - Get all users       *
-        * 5- Show last employed      *
-        * 6 - Exit           *
+        * 5- Show last employed      
+        * 6 -show first employed
+        * 7 - Exit           *
         *=================================*""";
         //System.out.println(head); Hice un encabezado aprovechando el TextBlock.
 
@@ -51,6 +52,9 @@ public class ExerciseW2 {
                         lastEmployRegistered(employs);
                         break;
                     case 6:
+                        firtsEmployRegistered(employs);
+                        break;
+                    case 7:
                         exit = true;
                         System.out.println("Leaving...");
                         break;
@@ -91,6 +95,7 @@ public class ExerciseW2 {
              return;
          }
          var age = sc.nextInt();
+         sc.nextLine();
          if (age < 0 || age > 70){
              System.out.println("Get a number valid please");
              return;
@@ -179,6 +184,15 @@ public class ExerciseW2 {
             // obtengo el ultimo elemento
             Empleado lastEmploy = employs.get(employs.size() - 1);
             System.out.println("Last employee: " + lastEmploy);
+        } else {
+            System.out.println("No employees registered.");
+        }
+    }
+    static void firtsEmployRegistered(ArrayList<Empleado> employs){
+        if (employs != null && !employs.isEmpty()) {
+            // obtengo el indice 0.
+            Empleado firstEmploy= employs.get(0);
+            System.out.println("First employee: " + firstEmploy);
         } else {
             System.out.println("No employees registered.");
         }
