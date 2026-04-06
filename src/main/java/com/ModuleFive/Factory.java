@@ -1,4 +1,4 @@
-package com.ModuleFiveJava;
+package main.java.com.ModuleFive;
 
 public record Factory(String nameCompany, byte sedes, String area) {
     public static void main(String[] args) {
