@@ -7,17 +7,17 @@ import java.util.Scanner;
 public class ExerciseW2 {
     public static void main(String[] args) {
 
-        boolean salir = false;
+        boolean exit = false;
         String head = """
         *=================================*
         *             MENÚ                *
         *=================================*
-        * 1 - Crear Empleado              *
-        * 2 - Crear Empresa               *
-        * 3 - Definir categoría salarial  *
-        * 4 - Mostrar todos los usuarios  *
-        * 5- mostrar ultimo empleado      *
-        * 6 - Salir                       *
+        * 1 - Create Employ              *
+        * 2 - Create Company               *
+        * 3 - Define salary category  *
+        * 4 - Get all users       *
+        * 5- Show last employed      *
+        * 6 - Exit           *
         *=================================*""";
         //System.out.println(head); Hice un encabezado aprovechando el TextBlock.
 
@@ -35,7 +35,7 @@ public class ExerciseW2 {
                 sc.nextLine(); // Limpiamos buffer
 
                 switch (option) {
-                    case 1: CreateUser(sc, empleados );
+                    case 1: CreateUser(sc, employs );
                         break;
                     case 2: CreateFactory(sc);
                         break;
@@ -48,58 +48,59 @@ public class ExerciseW2 {
                         showEmploys(mapUser);
                         break;
                     case 5:
-                        lastEmployRegistered(empleados);
+                        lastEmployRegistered(employs);
                         break;
                     case 6:
-                        salir = true;
-                        System.out.println("Saliendo...");
+                        exit = true;
+                        System.out.println("Leaving...");
                         break;
-                    default: System.out.println("Ingrese un número válido porfa.");
+                    default: System.out.println("Give a number valid please.");
                 }
             }catch (java.util.InputMismatchException e){
-                System.out.println("Asegurese de ingresar el dato que le estan pidiendo.");
+                System.out.println("Make sure you enter valid information");
                 sc.nextLine();
             }
 
 
 
-        } while (!salir); // Se repite mientras salir sea false
+        } while (!exit); // Se repite mientras salir sea false
     }
 
     //Creo las funciones afuera ya que es mas profesional
     //Inicio los id en cero
-     static int  contadorID = 1;
+     static int  countID = 1;
     // inicializo el arrayList
-     static ArrayList<Empleado> empleados = new ArrayList<>();
+     static ArrayList<Empleado> employs = new ArrayList<>();
      //Inicializo tambien el HashMap
     static HashMap<Integer, Empleado> mapUser = new HashMap<>();
      static void CreateUser(Scanner sc, ArrayList<Empleado> empleados){
          //Sumamos un numero al id
-         var id = contadorID++;
+         var id = countID++;
         //Pasamos a capturar datos.
-         System.out.println("Ingrese el nombre del empleado: ");
+         System.out.println("Give the name to employ: ");
          var name = sc.nextLine();
          //Validamos las entradas con los parametros pedidos en la rubrica
          if (name.isBlank()){
-             System.out.println("Por favor rellene el espacio de preferencia con texto.");
+             System.out.println("Please fill the field.");
              return;
          }
 
-         System.out.println("Ingrese la edad del empleado: ");
+         System.out.println("Give the age of the employ: ");
          if (!sc.hasNextInt()){
-             System.out.println("ingrese un numero porfa");
+             System.out.println("Give a number please");
              return;
          }
          var age = sc.nextInt();
          if (age < 0 || age > 70){
-             System.out.println("Ingrese un numero valido por fa");
+             System.out.println("Get a number valid please");
              return;
          }
 
-         System.out.println("Trabaja remoto? true/false: ");
-         var isRemote = sc.nextBoolean();
+         System.out.println("¿Remote work? Y/N: ");
+         String input = sc.nextLine();
+         boolean isRemote = input.equalsIgnoreCase("Y"); //True si es Y cualquier otro valor false.
 
-         System.out.println("Ingrese el salario mensual de este empleado en dolares : ");
+         System.out.println("Give the monthly salary: ");
          var salary = sc.nextLong();
 
          //Insertamos los datos en el record.
@@ -117,32 +118,38 @@ public class ExerciseW2 {
 
          //System.out.println("Testeo de ingresar en el HashMap");
          //System.out.println(mapUser);
-         System.out.println("El empleado creado tiene los siguientes datos: \n " + "Su id es: "+ id + " Su nombre es: " + NewEmploy.name() + " Y tiene: " + NewEmploy.age() + " años" + " Trabaja remoto? " + NewEmploy.isRemote() + " Y su salario mensual asignado fue: " + NewEmploy.SalaryByMoth() + "$ dolares" );
+         System.out.println("The created employee has the following data: \n"
+                 + "Their ID is: " + id
+                 + " Their name is: " + NewEmploy.name()
+                 + " and they are: " + NewEmploy.age() + " years old"
+                 + " Works remotely? " + NewEmploy.isRemote()
+                 + " And their assigned monthly salary is: " + NewEmploy.SalaryByMoth() + " dollars");
     }
-
 
     //Pasamos a crear empresa
     static void CreateFactory(Scanner sc){
         //Pasamos a capturar datos.
-        System.out.println("Ingrese el nombre de la empresa: ");
+        System.out.println("Give the name company: ");
         var nameCompany = sc.nextLine();
 
-        System.out.println("Ingrese la cantidad de sedes que tiene la empresa: ");
+        System.out.println("Enter the number of locations the company has: ");
         var sedes = sc.nextByte();
         sc.nextLine();
 
-        System.out.println("En que area esta especializada la empresa: ");
+        System.out.println("¿In what area does the company specialize?");
         var area = sc.nextLine();
 
         // Insertamos datos usando el record.
         Factory newFactory = new Factory(nameCompany, sedes, area);
         //Mostramos por consola lo ingresado.
-        System.out.println("La empresa ingresada fue: "+ newFactory.nameCompany() + " con " + newFactory.sedes() + " Sedes" + " Y dedicada a: " + newFactory.area());
+        System.out.println("The entered company is: " + newFactory.nameCompany()
+                + " with " + newFactory.sedes() + " branches"
+                + " and dedicated to: " + newFactory.area());
 
     }
 
     static void calcularCategoriaSalarial(Scanner sc) {
-        System.out.println("cuanto gana el fulano a evaluar: ");
+        System.out.println("Enter the salary of the employee to be evaluated:");
         var salary = sc.nextInt();
         sc.nextLine();
         String category = switch (salary){
@@ -156,21 +163,21 @@ public class ExerciseW2 {
 
             default -> throw new IllegalStateException("Unexpected value: " + salary);
         };
-        System.out.println("El salario ingresado: " + salary + " Corresponde a la categoria de: " + category);
+        System.out.println("The entered salary: " + salary + " corresponds to the category: " + category);
 
     }
     static void showEmploys(HashMap<Integer, Empleado> mapUser) {
-        System.out.println("La lista de todos los empleados es: ");
+        System.out.println("The list of all employees is:");
         for (Integer id: mapUser.keySet()){
             Empleado e =mapUser.get(id);
             System.out.println("id: " + id + " name: " + e.name() + " age: " + e.age() + " salary: " + e.SalaryByMoth() + " work remote: " + e.isRemote());
         }
         }
 
-    static void lastEmployRegistered(ArrayList<Empleado> empleados){
-        if (empleados != null && !empleados.isEmpty()) {
+    static void lastEmployRegistered(ArrayList<Empleado> employs){
+        if (employs != null && !employs.isEmpty()) {
             // obtengo el ultimo elemento
-            Empleado lastEmploy = empleados.get(empleados.size() - 1);
+            Empleado lastEmploy = employs.get(employs.size() - 1);
             System.out.println("Last employee: " + lastEmploy);
         } else {
             System.out.println("No employees registered.");
