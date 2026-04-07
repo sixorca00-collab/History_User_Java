@@ -1,8 +1,6 @@
 package main.java.com.ModuleFive;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 public class ExerciseW2 {
     public static void main(String[] args) {
@@ -73,7 +71,9 @@ public class ExerciseW2 {
 
         } while (!exit); // Se repite mientras salir sea false
     }
-
+    //==========================================================================================================================
+    //==========================================================================================================================
+    //==========================================================================================================================
     //Creo las funciones afuera ya que es mas profesional
     //Inicio los id en cero
      static int  countID = 1;
@@ -145,15 +145,54 @@ public class ExerciseW2 {
         var sedes = sc.nextByte();
         sc.nextLine();
 
-        System.out.println("¿In what area does the company specialize?");
+
+        System.out.println("Enter the Main specialize in your factory");
         var area = sc.nextLine();
+        System.out.println("Enter the technologies that the company has(Max 3)");
+        //Capturamos los datos que iran al List
+        System.out.println("Enter area 1:");
+        var t1 = sc.nextLine();
+        System.out.println("Enter area 2:");
+        var t2 = sc.nextLine();
+        System.out.println("Enter area 3:");
+        var t3 = sc.nextLine();
+        //Se agregan a la List con List.of
+        List<String> tecnologias = List.of(t1, t2, t3);
+        //Capturo los datos que iran al Map.
+        System.out.println("Enter the 2 main locations");
+        //Clave - valor
+        System.out.println("Get the area:");
+        var area1 = sc.nextLine();
+        System.out.println("Get the location");
+        var location1 = sc.nextLine();
+        //====================================
+        //2da sede
+        System.out.println("get the area 2: ");
+        var area2 = sc.nextLine();
+        System.out.println("get the location of area 2: ");
+        var location2 = sc.nextLine();
+
+        Map<String, String> ubicacion = Map.of(area1,location1, area2, location2);
 
         // Insertamos datos usando el record.
-        Factory newFactory = new Factory(nameCompany, sedes, area);
-        //Mostramos por consola lo ingresado.
-        System.out.println("The entered company is: " + newFactory.nameCompany()
-                + " with " + newFactory.sedes() + " branches"
-                + " and dedicated to: " + newFactory.area());
+        Factory newFactory = new Factory(nameCompany, sedes, area, tecnologias, ubicacion);
+
+        // --- RETORNO VISUAL (RECIBO) ---
+        System.out.println("\n==========================================");
+        System.out.println("           OFFICIAL RECEIPT              ");
+        System.out.println("==========================================");
+        System.out.println("COMPANY:      " + newFactory.nameCompany().toUpperCase());
+        System.out.println("BRANCHES:     " + newFactory.sedes());
+        System.out.println("SECTOR:       " + newFactory.area());
+        System.out.println("------------------------------------------");
+        System.out.println("TECHNOLOGIES: " + String.join(" | ", newFactory.tecnologias()));
+
+        // Corregido: .ubicacion() con el cierre de paréntesis del println
+        System.out.println("LOCATIONS:    " + newFactory.sedesDetalle());
+
+        System.out.println("------------------------------------------");
+        System.out.println("STATUS:       Verified & Immutable (Java 11)");
+        System.out.println("==========================================\n");
 
     }
 
