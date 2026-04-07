@@ -54,7 +54,7 @@ public class ExerciseW2 {
                         firtsEmployRegistered(employs);
                         break;
                     case 7:
-                        removeEmploy(sc,  employs,  mapUser);
+                        removeEmploybyId(sc,  employs,  mapUser);
                         break;
                     case 8:
                         exit = true;
@@ -81,6 +81,8 @@ public class ExerciseW2 {
      static ArrayList<Empleado> employs = new ArrayList<>();
      //Inicializo tambien el HashMap
     static HashMap<Integer, Empleado> mapUser = new HashMap<>();
+    //uso LinkedList implementado en Java 21 para poder usar getFirst,Last y reversed.
+    static LinkedList<Empleado> listaEmpleados = new LinkedList<>();
      static void CreateUser(Scanner sc, ArrayList<Empleado> empleados){
          //Sumamos un numero al id
          var id = countID++;
@@ -226,7 +228,7 @@ public class ExerciseW2 {
             System.out.println("id: " + id + " name: " + e.name() + " age: " + e.age() + " salary: " + e.SalaryByMoth() + " work remote: " + e.isRemote());
         }
         }
-    static void removeEmploy(Scanner sc, ArrayList<Empleado> employs, HashMap<Integer, Empleado> mapUser){
+    static void removeEmploybyId(Scanner sc, ArrayList<Empleado> employs, HashMap<Integer, Empleado> mapUser){
 
         System.out.println("Enter the ID you want to remove:");
 
@@ -272,6 +274,20 @@ public class ExerciseW2 {
                 System.out.println("No employees registered.");
             }
         }
+    static void getFirstAndLastEmploy(ArrayList<Empleado> employs){
+        if(employs != null && !employs.isEmpty()){
+            //Convierto la ArrayList a LinkedList
+            LinkedList<Empleado> linkedEmploys = new LinkedList<>(employs);
+
+            var firstEmploy = linkedEmploys.getFirst();
+            var lastEmploy = linkedEmploys.getLast();
+            var reverseList = linkedEmploys.reversed();
+
+            System.out.println("The first employ registered is: " + firstEmploy);
+            System.out.println("The last employ registered is:  " + lastEmploy);
+            System.out.println("The list the employs in reverse is: " + reverseList);
+        }
+    }
 }
 
 
