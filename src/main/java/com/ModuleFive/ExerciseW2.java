@@ -7,18 +7,20 @@ public class ExerciseW2 {
 
         boolean exit = false;
         String head = """
-        *=================================*
-        *             MENÚ                *
-        *=================================*
-        * 1 - Create Employ              *
-        * 2 - Create Company               *
-        * 3 - Define salary category  *
-        * 4 - Get all users       *
-        * 5- Show last employed      
-        * 6 -show first employed
-        * 7 - remove user by Id
-        * 8 - Exit           *
-        *=================================*""";
+*=================================================*
+*                   MENÚ                         *
+*=================================================*
+* 1 - Create Employ                               *
+* 2 - Create Company                              *
+* 3 - Define salary category                      *
+* 4 - Show all users                               *
+* 5 - Show last employed                           *
+* 6 - Show first employed                          *
+* 7 - Remove user by ID                            *
+* 8 - Show first & last employee + reversed list  *
+* 9 - Exit                                        *
+*=================================================*
+""";
         //System.out.println(head); Hice un encabezado aprovechando el TextBlock.
 
         Scanner sc = new Scanner(System.in);
@@ -57,6 +59,9 @@ public class ExerciseW2 {
                         removeEmploybyId(sc,  employs,  mapUser);
                         break;
                     case 8:
+                        getFirstAndLastEmploy(LinkedEmploys);
+                        break;
+                    case 9:
                         exit = true;
                         System.out.println("Leaving...");
                         break;
@@ -82,7 +87,7 @@ public class ExerciseW2 {
      //Inicializo tambien el HashMap
     static HashMap<Integer, Empleado> mapUser = new HashMap<>();
     //uso LinkedList implementado en Java 21 para poder usar getFirst,Last y reversed.
-    static LinkedList<Empleado> listaEmpleados = new LinkedList<>();
+    static LinkedList<Empleado> LinkedEmploys = new LinkedList<>();
      static void CreateUser(Scanner sc, ArrayList<Empleado> empleados){
          //Sumamos un numero al id
          var id = countID++;
@@ -274,7 +279,7 @@ public class ExerciseW2 {
                 System.out.println("No employees registered.");
             }
         }
-    static void getFirstAndLastEmploy(ArrayList<Empleado> employs){
+    static void getFirstAndLastEmploy(List<Empleado> employs){
         if(employs != null && !employs.isEmpty()){
             //Convierto la ArrayList a LinkedList
             LinkedList<Empleado> linkedEmploys = new LinkedList<>(employs);
