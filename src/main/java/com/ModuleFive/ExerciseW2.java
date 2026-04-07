@@ -137,6 +137,11 @@ public class ExerciseW2 {
 
     //Pasamos a crear empresa
     static void CreateFactory(Scanner sc){
+        /*
+         * List.of() y Map.of() garantizan inmutabilidad. A diferencia de ArrayList,
+         * no permiten cambios post-creación, lo que previene errores de estado
+         * inconsistente en el objeto 'newFactory'.
+         */
         //Pasamos a capturar datos.
         System.out.println("Give the name company: ");
         var nameCompany = sc.nextLine();
