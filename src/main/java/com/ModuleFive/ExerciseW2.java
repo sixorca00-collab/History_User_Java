@@ -7,19 +7,20 @@ public class ExerciseW2 {
 
         boolean exit = false;
         String head = """
-*=================================================*
-*                   MENÚ                         *
-*=================================================*
-* 1 - Create Employ                               *
-* 2 - Create Company                              *
-* 3 - Define salary category                      *
+*==================================================*
+*                   MENÚ                           *
+*==================================================*
+* 1 - Create Employ                                *
+* 2 - Create Company                               *
+* 3 - Define salary category                       *
 * 4 - Show all users                               *
 * 5 - Show last employed                           *
 * 6 - Show first employed                          *
 * 7 - Remove user by ID                            *
-* 8 - Show first & last employee + reversed list  *
-* 9 - Exit                                        *
-*=================================================*
+* 8 - Show first & last employee + reversed list   *
+* 9 - Remove employ by Score                       *
+* 10-Exit                                          *
+*==================================================*
 """;
         //System.out.println(head); Hice un encabezado aprovechando el TextBlock.
 
@@ -60,8 +61,10 @@ public class ExerciseW2 {
                         break;
                     case 8:
                         getFirstAndLastEmploy(LinkedEmploys);
-                        break;
                     case 9:
+                        removeEmployByScore( sc, mapUser);
+                        break;
+                    case 10:
                         exit = true;
                         System.out.println("Leaving...");
                         break;
@@ -292,6 +295,38 @@ public class ExerciseW2 {
             System.out.println("The last employ registered is:  " + lastEmploy);
             System.out.println("The list the employs in reverse is: " + reverseList);
         }
+    }
+    static void removeEmployByScore( Scanner sc, HashMap<Integer, Empleado> mapUser){
+         //Los llamo para ver
+        try {
+            showEmploys(mapUser);
+            System.out.println("¿What is the employ id?");
+            var id = sc.nextInt();
+            sc.nextLine();
+            var existe = mapUser.containsKey(id);
+            if (!existe){
+                System.out.println("the employ not exist.");
+                return;
+            }else {
+                System.out.println("The emply this" + mapUser.get(id));
+            }
+
+            System.out.println("¿What score did the user get?(limit 100)");
+            var score = sc.nextByte();
+            sc.nextLine(); //limpio ya que se pidio dato numerico.
+            if(score <0 || score >100){
+                System.out.println("Get a valid number");
+            } else if  (score <= 50) {
+                mapUser.remove(id);
+                System.out.println("The employee was dismissed for failing the test");
+            }else {
+                System.out.println("The employ pass a test");
+            }
+        } catch ( InputMismatchException e) {
+            System.out.println("Get a valid data");
+            sc.nextLine();
+        }
+
     }
 }
 
