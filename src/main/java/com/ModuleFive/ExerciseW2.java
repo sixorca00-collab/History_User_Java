@@ -19,7 +19,8 @@ public class ExerciseW2 {
 * 7 - Remove user by ID                            *
 * 8 - Show first & last employee + reversed list   *
 * 9 - Remove employ by Score                       *
-* 10-Exit                                          *
+* 10-total number of employees and average salary  *
+* 11-Exit                                          *
 *==================================================*
 """;
         //System.out.println(head); Hice un encabezado aprovechando el TextBlock.
@@ -65,6 +66,8 @@ public class ExerciseW2 {
                         removeEmployByScore( sc, mapUser);
                         break;
                     case 10:
+                        totalPromedio(employs);
+                    case 11:
                         exit = true;
                         System.out.println("Leaving...");
                         break;
@@ -362,6 +365,29 @@ public class ExerciseW2 {
       Con esto, el código demuestra el uso moderno de Java,
       manteniendo claridad sin sacrificar el tipado fuerte del lenguaje.
      */
+    static void totalPromedio(ArrayList<Empleado> employs){
+        if (employs == null || employs.isEmpty()){
+            System.out.println("Not employees registered");
+            return;
+        }
+        var totalEmploys = employs.size();
+            System.out.println("total employs: " + totalEmploys);
+
+
+            System.out.println("The average of all salaries is: ");
+            var suma = 0L;
+
+            for (var emp : employs){
+                suma += emp.SalaryByMoth();
+            }
+            var promedio = suma/totalEmploys;
+
+            System.out.println("The average of the all salaries is: " + promedio);
+
+
+
+
+    }
 }
 
 
