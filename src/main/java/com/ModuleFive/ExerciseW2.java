@@ -317,7 +317,7 @@ public class ExerciseW2 {
             if(score <0 || score >100){
                 System.out.println("Get a valid number");
             } else if  (score <= 50) {
-                mapUser.remove(id);
+                mapUser.entrySet().removeIf(entry -> entry.getKey().equals(id)); //removeIf
                 System.out.println("The employee was dismissed for failing the test");
             }else {
                 System.out.println("The employ pass a test");
