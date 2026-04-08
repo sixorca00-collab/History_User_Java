@@ -326,8 +326,42 @@ public class ExerciseW2 {
             System.out.println("Get a valid data");
             sc.nextLine();
         }
-
     }
+    /*
+     En este programa se utilizó inferencia de tipos mediante la palabra clave `var`,
+     introducida en Java 10 y ampliamente usada en Java 11+.
+
+      Esto permite declarar variables locales sin especificar explícitamente su tipo,
+     ya que el compilador lo infiere automáticamente a partir del valor asignado.
+
+     Ejemplo comparativo:
+
+     Java 8 (declaración explícita):
+         Integer id = sc.nextInt();
+        Empleado emp = mapUser.get(id);
+
+     Java 11+ (inferencia de tipos):
+       var id = sc.nextInt();
+       var emp = mapUser.get(id);
+
+     Ventajas:
+      - Reduce la redundancia en el código.
+      - Mejora la legibilidad cuando el tipo es evidente.
+      - Hace el código más limpio y moderno.
+
+      Además, `var` se utilizó en:
+      - Variables locales dentro de métodos
+      - Bucles for-each
+      - Expresiones lambda (removeIf)
+
+      Restricciones importantes:
+      - No se puede usar en atributos de clase
+      - No se puede usar como tipo de retorno
+      - Solo aplica a variables locales
+
+      Con esto, el código demuestra el uso moderno de Java,
+      manteniendo claridad sin sacrificar el tipado fuerte del lenguaje.
+     */
 }
 
 
