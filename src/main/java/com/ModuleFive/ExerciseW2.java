@@ -1,5 +1,6 @@
 package main.java.com.ModuleFive;
-
+import main.java.com.ModuleFive.model.Empleado;
+import main.java.com.ModuleFive.model.Factory;
 import java.util.*;
 
 public class ExerciseW2 {
@@ -372,7 +373,6 @@ public class ExerciseW2 {
         }
         var totalEmploys = employs.size();
             System.out.println("total employs: " + totalEmploys);
-
 
             System.out.println("The average of all salaries is: ");
             var suma = 0L;

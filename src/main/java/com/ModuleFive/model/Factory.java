@@ -1,6 +1,5 @@
-package main.java.com.ModuleFive;
+package main.java.com.ModuleFive.model;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
