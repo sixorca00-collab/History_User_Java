@@ -14,23 +14,21 @@ public class Main {
         var Menu = """
                
                ====== MENÚ PRINCIPAL ======
-               1.  Add employee
-               2.  Show all employees
-               3.  Eliminar producto
-               4.  Buscar producto
-               5.  Actualizar producto
-               6.  Ver carrito
-               7.  Vaciar carrito
-               8.  Realizar compra
-               9.  Ver historial de compras
-               10. Configuración
-               0. Salir
+               1. Add employee
+               2. Add company
+               3. Show all employees
+               4. Show salary category
+               5. Show Last Employ.
+               6. 
+               7. 
+               8. 
+               9. 
+               10.
+               0. 
                ============================
                
                Seleccione una opción:
                """;
-
-        System.out.println(Menu);
 
         while (!exit){
             System.out.println(Menu);
@@ -50,25 +48,25 @@ public class Main {
                 case 3: new ShowUsersCommand(serviceEmploy).execute();
                 break;
                 case 4:
-                    System.out.println(faltan);
+                    new getSalarialCategoryCommand(sc, serviceEmploy).execute();
                 break;
                 case 5:
-                    System.out.println(faltan);
+                    new showLastUserCommand(serviceEmploy).execute();
                     break;
                 case 6:
-                    System.out.println(faltan);
+                    new showFirtEmployCommand(serviceEmploy).execute();
                     break;
                 case 7:
-                    System.out.println(faltan);
+                    new removeEmployByIdCommand(serviceEmploy, sc);
                     break;
                 case 8:
-                    System.out.println(faltan);
+                    new getFistLastandReversedCommand(serviceEmploy).execute();
                     break;
                 case 9:
-                    System.out.println(faltan);
+                  new removeEmployByScoreCommand(serviceEmploy, sc);
                     break;
                 case 10:
-                    System.out.println(faltan);
+                    new TotalPromedioCommand(serviceEmploy).execute();
                     break;
                 case 0:
                     System.out.println("Leaving...");
