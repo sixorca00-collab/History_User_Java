@@ -1,6 +1,6 @@
 package main.java.com.ModuleFive.model;
 
-public final class EmpleadoClass extends Persona {
+public sealed class EmpleadoClass extends Persona permits Desarrollador, Gerente {
     public EmpleadoClass(String name){
         super(name);
     }

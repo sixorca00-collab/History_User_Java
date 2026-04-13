@@ -6,7 +6,7 @@ import main.java.com.ModuleFive.commands.*;
 import java.util.Scanner;
 
 public class Main {
-    static void main(String[] args) {
+    public static void main(String[] args) {
         EmployeeService serviceEmploy = new EmployeeService();
         CompaniesService serviceCompany = new CompaniesService();
         Scanner sc = new Scanner(System.in);
@@ -58,19 +58,22 @@ public class Main {
                     new showFirtEmployCommand(serviceEmploy).execute();
                     break;
                 case 7:
-                    new removeEmployByIdCommand(serviceEmploy, sc);
+                    new removeEmployByIdCommand(serviceEmploy, sc).execute();
                     break;
                 case 8:
                     new getFistLastandReversedCommand(serviceEmploy).execute();
                     break;
                 case 9:
-                  new removeEmployByScoreCommand(serviceEmploy, sc);
+                  new removeEmployByScoreCommand(serviceEmploy, sc).execute();
                     break;
                 case 10:
                     new TotalPromedioCommand(serviceEmploy).execute();
                     break;
                 case 11:
                     new desempeñoReporteCommand( serviceEmploy, sc).execute();
+                case 12:
+                    new validarPersonaCommand(serviceEmploy).execute();
+                    break;
                 case 0:
                     System.out.println("Leaving...");
                     exit = true;
