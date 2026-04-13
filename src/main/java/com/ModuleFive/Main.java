@@ -1,4 +1,5 @@
 package main.java.com.ModuleFive;
+import main.java.com.ModuleFive.model.Empleado;
 import main.java.com.ModuleFive.service.EmployeeService;
 import main.java.com.ModuleFive.service.CompaniesService;
 import main.java.com.ModuleFive.commands.*;
@@ -68,6 +69,8 @@ public class Main {
                 case 10:
                     new TotalPromedioCommand(serviceEmploy).execute();
                     break;
+                case 11:
+                    new desempeñoReporteCommand( serviceEmploy, sc).execute();
                 case 0:
                     System.out.println("Leaving...");
                     exit = true;

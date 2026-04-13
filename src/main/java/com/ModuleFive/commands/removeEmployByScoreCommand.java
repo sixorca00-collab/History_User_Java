@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-public class removeEmployByScoreCommand {
+public class removeEmployByScoreCommand implements menuCommand {
     private final EmployeeService service;
     private final Scanner sc;
 
@@ -14,6 +14,7 @@ public class removeEmployByScoreCommand {
         this.service = service;
         this.sc = sc;
     }
+    @Override
     public void execute(){
         //Obtenemos todos los empleados
         Map<Integer, Empleado> employsMap = service.getMapEmploys();

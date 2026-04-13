@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-public class createFactoryCommand {
+public class createFactoryCommand implements menuCommand {
     private final Scanner sc;
     private final CompaniesService service;
 

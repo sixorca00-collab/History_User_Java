@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class getSalarialCategoryCommand {
+public class getSalarialCategoryCommand implements menuCommand{
     private final  EmployeeService service;
     private final Scanner sc;
 
@@ -14,7 +14,7 @@ public class getSalarialCategoryCommand {
         this.service = service;
         this.sc = sc;
     }
-
+@Override
     public void execute(){
         System.out.println("List of employees: ");
         List<Empleado> employs = service.getEmployees();

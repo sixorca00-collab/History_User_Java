@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-public class removeEmployByIdCommand {
+public class removeEmployByIdCommand implements menuCommand {
     private final EmployeeService service;
     private final Scanner sc;
 
@@ -14,7 +14,7 @@ public class removeEmployByIdCommand {
         this.service = service;
         this.sc = sc;
     }
-
+@Override
     public void execute(){
         Map<Integer, Empleado> employsMap = service.getMapEmploys();
         List<Empleado> employsList = service.getEmployees();

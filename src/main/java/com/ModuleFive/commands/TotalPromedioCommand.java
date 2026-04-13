@@ -4,13 +4,13 @@ import main.java.com.ModuleFive.service.EmployeeService;
 
 import java.util.List;
 
-public class TotalPromedioCommand {
+public class TotalPromedioCommand implements menuCommand {
     private final EmployeeService service;
 
     public TotalPromedioCommand(EmployeeService service){
         this.service = service;
     }
-
+    @Override
     public void execute(){
         List<Empleado> employees = service.getEmployees();
 

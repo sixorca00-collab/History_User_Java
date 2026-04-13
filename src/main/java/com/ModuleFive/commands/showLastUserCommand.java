@@ -4,13 +4,13 @@ import main.java.com.ModuleFive.service.EmployeeService;
 
 import java.util.List;
 
-public class showLastUserCommand {
+public class showLastUserCommand implements menuCommand{
     private EmployeeService service;
 
     public showLastUserCommand(EmployeeService service){
         this.service = service;
     }
-
+@Override
     public void execute(){
         List<Empleado> employees = service.getEmployees();
         if (employees == null || employees.isEmpty()){

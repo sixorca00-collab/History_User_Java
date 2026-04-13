@@ -4,7 +4,7 @@ import main.java.com.ModuleFive.service.EmployeeService;
 
 import java.util.List;
 
-public class getFistLastandReversedCommand {
+public class getFistLastandReversedCommand implements menuCommand{
     private final EmployeeService service;
 
     public getFistLastandReversedCommand(EmployeeService service) {
@@ -12,6 +12,7 @@ public class getFistLastandReversedCommand {
     }
 
     //Ejecutamos bb
+    @Override
     public void execute(){
         List<Empleado> employees = service.getEmployees();
 

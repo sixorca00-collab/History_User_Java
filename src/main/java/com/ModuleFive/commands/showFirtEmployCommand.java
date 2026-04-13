@@ -4,13 +4,13 @@ import main.java.com.ModuleFive.service.EmployeeService;
 
 import java.util.List;
 
-public class showFirtEmployCommand {
+public class showFirtEmployCommand implements menuCommand {
     private EmployeeService service;
 
     public showFirtEmployCommand(EmployeeService service){
         this.service = service;
     }
-
+@Override
     public void execute(){
         List<Empleado> employees = service.getEmployees();
 
