@@ -7,7 +7,7 @@ public abstract sealed class Persona permits EmpleadoClass, ConsultorExterno {
         this.name = name;
     }
 
-    public String getname() {
+    public String getName() {
         return name;
     }
 

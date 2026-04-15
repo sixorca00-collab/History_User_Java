@@ -1,6 +1,8 @@
 package main.java.com.ModuleFive.commands;
 import main.java.com.ModuleFive.service.EmployeeService;
 import main.java.com.ModuleFive.model.Empleado;
+
+import java.util.Map;
 import java.util.Scanner;
 
 public class createEmployCommand implements menuCommand{
@@ -13,7 +15,7 @@ public class createEmployCommand implements menuCommand{
     }
 
     @Override
-    public void execute(){
+    public Map<String, Double> execute(){
 
         var id = service.NextId();
         //Pido datos
@@ -41,7 +43,7 @@ public class createEmployCommand implements menuCommand{
         System.out.printf("Employee registered success. The name is %s he have id: %d.\n", name, id);
 
 
-
+        return null;
     }
 
 

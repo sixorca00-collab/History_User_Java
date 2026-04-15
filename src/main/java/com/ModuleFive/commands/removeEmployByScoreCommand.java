@@ -15,13 +15,13 @@ public class removeEmployByScoreCommand implements menuCommand {
         this.sc = sc;
     }
     @Override
-    public void execute(){
+    public Map<String, Double> execute(){
         //Obtenemos todos los empleados
         Map<Integer, Empleado> employsMap = service.getMapEmploys();
         List<Empleado> employsList = service.getEmployees();
         if (employsMap == null || employsMap.isEmpty()){
             System.out.println("Not employees registered.");
-            return;
+            return null;
         }
 
         System.out.println("List of employs:");
@@ -33,7 +33,7 @@ public class removeEmployByScoreCommand implements menuCommand {
         var search = sc.nextInt();
         if(!employsMap.containsKey(search)){
             System.out.println("Employee not found");
-            return;
+            return null;
         }
         //Pedimos Score
         System.out.println("Enter the Score of employ");
@@ -49,5 +49,6 @@ public class removeEmployByScoreCommand implements menuCommand {
             System.out.println("Employ aproved: " + emp.name());
         }
 
-}
+        return null;
+    }
 }

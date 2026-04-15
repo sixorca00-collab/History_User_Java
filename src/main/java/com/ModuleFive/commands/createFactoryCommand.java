@@ -14,7 +14,7 @@ public class createFactoryCommand implements menuCommand {
         this.service = service;
     }
 
-    public void execute(){
+    public Map<String, Double> execute(){
         Scanner sc = new Scanner(System.in);
         //Pido los datos
         System.out.println("Give the company name: ");
@@ -59,5 +59,6 @@ public class createFactoryCommand implements menuCommand {
         System.out.printf("The company has created the name is: %s and have %d locations\n", nameCo, locations);
 
 
+        return null;
     }
 }

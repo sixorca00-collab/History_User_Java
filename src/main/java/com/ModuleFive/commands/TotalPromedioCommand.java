@@ -3,6 +3,7 @@ import main.java.com.ModuleFive.model.Empleado;
 import main.java.com.ModuleFive.service.EmployeeService;
 
 import java.util.List;
+import java.util.Map;
 
 public class TotalPromedioCommand implements menuCommand {
     private final EmployeeService service;
@@ -11,12 +12,12 @@ public class TotalPromedioCommand implements menuCommand {
         this.service = service;
     }
     @Override
-    public void execute(){
+    public Map<String, Double> execute(){
         List<Empleado> employees = service.getEmployees();
 
         if (employees == null || employees.isEmpty()){
             System.out.println("Not employees registered.");
-            return;
+            return null;
         }
         double sum = 0;
 
@@ -31,5 +32,6 @@ public class TotalPromedioCommand implements menuCommand {
 
         //Empleado empleado; Asi se accede a los objetos
 
+        return null;
     }
 }

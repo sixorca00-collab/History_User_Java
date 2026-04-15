@@ -4,6 +4,7 @@ import main.java.com.ModuleFive.model.desempeñoRecord;
 import main.java.com.ModuleFive.service.EmployeeService;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class desempeñoReporteCommand implements menuCommand{
@@ -15,7 +16,7 @@ public class desempeñoReporteCommand implements menuCommand{
     }
 
 @Override
-    public void execute(){
+    public Map<String, Double> execute(){
         List<Empleado> empleados = service.getEmployees();
         System.out.println(empleados);
         System.out.println("Enter the employ id: ");
@@ -38,5 +39,6 @@ public class desempeñoReporteCommand implements menuCommand{
     } else {
         System.out.println("Employee not found");
     }
+    return null;
 }
     }

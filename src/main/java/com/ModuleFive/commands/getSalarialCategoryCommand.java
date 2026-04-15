@@ -2,8 +2,8 @@ package main.java.com.ModuleFive.commands;
 import main.java.com.ModuleFive.model.Empleado;
 import main.java.com.ModuleFive.service.EmployeeService;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class getSalarialCategoryCommand implements menuCommand{
@@ -15,14 +15,14 @@ public class getSalarialCategoryCommand implements menuCommand{
         this.sc = sc;
     }
 @Override
-    public void execute(){
+    public Map<String, Double> execute(){
         System.out.println("List of employees: ");
         List<Empleado> employs = service.getEmployees();
 
 
         if (employs == null || employs.isEmpty()){
             System.out.println("Don't have employs registered.");
-            return;
+            return null;
         }
         //Los muestro.
         for (Empleado e : employs){
@@ -44,7 +44,7 @@ public class getSalarialCategoryCommand implements menuCommand{
         //Validamos
         if (search == null){
             System.out.println("Employee not found");
-            return;
+            return null;
         }
         //Vemos el salario del fulano
         var salary = search.SalaryByMoth();
@@ -58,5 +58,6 @@ public class getSalarialCategoryCommand implements menuCommand{
 
         System.out.println("The employ category is: " + category);
 
+    return null;
 }
 }

@@ -1,5 +1,6 @@
 package main.java.com.ModuleFive;
 import main.java.com.ModuleFive.model.Empleado;
+import main.java.com.ModuleFive.model.EmpleadoClass;
 import main.java.com.ModuleFive.service.EmployeeService;
 import main.java.com.ModuleFive.service.CompaniesService;
 import main.java.com.ModuleFive.commands.*;
@@ -20,12 +21,15 @@ public class Main {
                3. Show all employees
                4. Show salary category
                5. Show Last Employ.
-               6. 
-               7. 
-               8. 
-               9. 
-               10.
-               0. 
+               6. Show firts employ
+               7. Remove employee by id
+               8. Pet fist, last and reversed Employs
+               9. Performance report.
+               10.Performance salary total.
+               11.Performance report
+               12.Validate employability
+               13.Bonus calculation
+               0. Exit
                ============================
                
                Seleccione una opción:
@@ -74,10 +78,15 @@ public class Main {
                 case 12:
                     new validarPersonaCommand(serviceEmploy).execute();
                     break;
+                case 13:
+                    new CalcularBonoCommand(serviceEmploy).execute();
+                    break;
                 case 0:
                     System.out.println("Leaving...");
                     exit = true;
                     break;
+                default:
+                    System.out.println("Seleccione una opcion valida");
             }
 
         }

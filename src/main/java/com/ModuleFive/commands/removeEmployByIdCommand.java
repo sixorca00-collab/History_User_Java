@@ -15,14 +15,14 @@ public class removeEmployByIdCommand implements menuCommand {
         this.sc = sc;
     }
 @Override
-    public void execute(){
+    public Map<String, Double> execute(){
         Map<Integer, Empleado> employsMap = service.getMapEmploys();
         List<Empleado> employsList = service.getEmployees();
 
         //Ahora si lo riquito
         if (employsMap == null || employsMap.isEmpty()){
             System.out.println("Not employees registered");
-            return;
+            return null;
         }
         System.out.println("employs whit id: ");
         System.out.println(employsMap);
@@ -34,11 +34,12 @@ public class removeEmployByIdCommand implements menuCommand {
 
         if (!employsMap.containsKey(remove)){
             System.out.println("Employ not found");
-            return;
+            return null;
         } Empleado removed = employsMap.remove(remove);
           employsList.removeIf(e -> e.id() == remove);
         System.out.println("The employ deleted is:\n " + removed.name());
-        }
+    return null;
+}
 
     }
 

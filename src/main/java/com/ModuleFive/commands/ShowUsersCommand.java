@@ -2,6 +2,8 @@ package main.java.com.ModuleFive.commands;
 import  main.java.com.ModuleFive.model.Empleado;
 import main.java.com.ModuleFive.service.EmployeeService;
 
+import java.util.Map;
+
 
 public class ShowUsersCommand implements menuCommand{
     private final EmployeeService service;
@@ -11,7 +13,7 @@ public class ShowUsersCommand implements menuCommand{
     }
 
     @Override
-    public void execute(){
+    public Map<String, Double> execute(){
         System.out.println("The list of employees is: ");
         //usamos el service para obtener los datos
         var map = service.getMapEmploys();
@@ -19,4 +21,5 @@ public class ShowUsersCommand implements menuCommand{
         Empleado e = map.get(id);
         System.out.printf("id: %d |Name: %s|Age: %d |Salary: %d|Remote: %b|", id, e.name(), e.age(), e.SalaryByMoth(), e.isRemote() );
     }
-}}
+        return null;
+    }}

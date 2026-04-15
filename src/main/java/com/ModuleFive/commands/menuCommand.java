@@ -1,5 +1,7 @@
 package main.java.com.ModuleFive.commands;
 
+import java.util.Map;
+
 public interface menuCommand {
-    void execute();
+    Map<String, Double> execute();
 }
